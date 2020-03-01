@@ -8,10 +8,11 @@ public class WallJump : MonoBehaviour
     public GameObject leftCheck;
     public GameObject rightCheck;
     public float wallSlideSpeed = 5f;
-
+    public float wallJumpMult = 2f;
+    public float wallJumpXp = 1f;
+    public float wallJumpYp = 0.75f;
     public bool wallSlide = false;
-    public Vector2 wallJump;
-    public float dirX = 1;
+    private float dirX = 1;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class WallJump : MonoBehaviour
         float yVelo = rb.velocity.y;
 
         if (onWall) {
-            dirX = leftCheck.GetComponent<MoveCheck>().col ? 1 : -1;
+            dirX = leftCheck.GetComponent<MoveCheck>().col ? -1 : 1;
             GetComponent<BetterJump>().enabled = false;
             if (rb.velocity.y < 0 && !((GetComponent<Movement>().jumpCheck).GetComponent<MoveCheck>().col)) {
                 wallSlide = true;
@@ -33,11 +34,13 @@ public class WallJump : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
                 }
             }
-            //if (wallSlide && Input.GetButton("Jump")) {
-           //     rb.AddForce(new Vector2(dirX * wallJump.x, wallJump.y));
-           // }
+            if (wallSlide && Input.GetButton("Jump")) {
+                //rb.AddForce(new Vector2(dirX * wallJump.x, wallJump.y));
+                float jpPower = GetComponent<Movement>().jumpHei;
+                rb.velocity = new Vector2(-dirX * jpPower * wallJumpMult * wallJumpXp, jpPower * wallJumpMult * wallJumpYp);
+            }
         } else {
-           // GetComponent<BetterJump>().enabled = true;
+            GetComponent<BetterJump>().enabled = true;
             wallSlide = false;
             rb.velocity = new Vector2(rb.velocity.x, yVelo);
         }

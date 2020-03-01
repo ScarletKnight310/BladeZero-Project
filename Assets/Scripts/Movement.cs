@@ -24,13 +24,13 @@ public class Movement : MonoBehaviour
             Jump();
     }
 
-    void Walk(float moveMod) 
-    {
+    void Walk(float moveMod) { 
         rb.velocity = new Vector2(moveMod * speed, rb.velocity.y);
     }
 
     void Jump() 
     {
-       rb.AddForce(new Vector2(0, 1) * jumpHei, ForceMode2D.Impulse);
+        //rb.AddForce(new Vector2(0, 1) * jumpHei, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(rb.velocity.x,jumpHei);
     }
 }
