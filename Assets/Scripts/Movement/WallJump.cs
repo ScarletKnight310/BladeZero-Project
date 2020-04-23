@@ -5,23 +5,24 @@ using UnityEngine;
 public class WallJump : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private float dirX = 1;
+    private float jpPower = 0;
+
     public GameObject leftCheck;
     public GameObject rightCheck;
+
     public float wallSlideSpeed = 5f;
     public float wallJumpMult = 2f;
-    public float wallJumpXp = 1f;
-    public float wallJumpYp = 0.75f;
     public bool wallSlide = false;
-    private float dirX = 1;
-
+  
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        jpPower = GetComponent<Movement>().jumpHei;
     }
 
     void FixedUpdate()
     {
-        RaycastHit2D nearWall;
         bool onWall = leftCheck.GetComponent<MoveCheck>().col || rightCheck.GetComponent<MoveCheck>().col;
         float yVelo = rb.velocity.y;
 
@@ -35,9 +36,8 @@ public class WallJump : MonoBehaviour
                 }
             }
             if (wallSlide && Input.GetButton("Jump")) {
-                //rb.AddForce(new Vector2(dirX * wallJump.x, wallJump.y));
-                float jpPower = GetComponent<Movement>().jumpHei;
-                rb.velocity = new Vector2(-dirX * jpPower * wallJumpMult * wallJumpXp, jpPower * wallJumpMult * wallJumpYp);
+               // rb.velocity = new Vector2(-dirX * wallJumpMult, 1) * jpPower;
+                rb.AddForce(new Vector2(-dirX * wallJumpMult , 1) * jpPower, ForceMode2D.Impulse);
             }
         } else {
             GetComponent<BetterJump>().enabled = true;

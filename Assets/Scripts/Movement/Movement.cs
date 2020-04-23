@@ -5,12 +5,16 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private float x = 0;
+    private bool jumping = false;
+
     [Header("External Hit Boxes")]
     public GameObject jumpCheck;
 
     [Space]
     [Header("Player Movement Modifier")]
     public float speed, jumpHei = 5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,10 +22,17 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        Walk(x);
+        x = Input.GetAxis("Horizontal");
         if (Input.GetButton("Jump") && jumpCheck.GetComponent<MoveCheck>().col)
+            jumping = true;
+    }
+
+    void FixedUpdate() { 
+        Walk(x);
+        if (jumping) {
             Jump();
+            jumping = false;
+        }
     }
 
     void Walk(float moveMod) { 
@@ -30,7 +41,6 @@ public class Movement : MonoBehaviour
 
     void Jump() 
     {
-        //rb.AddForce(new Vector2(0, 1) * jumpHei, ForceMode2D.Impulse);
         rb.velocity = new Vector2(rb.velocity.x,jumpHei);
     }
 }
