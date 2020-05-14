@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 835cde664ac0ee84c914f1adc56d9085
+guid: e5956c37bd7e7534bbba4eb2576d39d2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3135792934050771220
+    second: PlayerRunSword_0
+  - first:
+      213: -9059277345700933626
+    second: PlayerRunSword_1
+  - first:
+      213: -8588498538783268548
+    second: PlayerRunSword_2
+  - first:
+      213: -6189792025263140216
+    second: PlayerRunSword_3
+  - first:
+      213: -9054265219633871193
+    second: PlayerRunSword_4
+  - first:
+      213: -6402609324908292159
+    second: PlayerRunSword_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -156,7 +174,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PlayerRunSword_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411b6433f03948b20800000000000000
+      internalID: 3135792934050771220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerRunSword_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60090cf804bf64280800000000000000
+      internalID: -9059277345700933626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerRunSword_2
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c31acd135168fc880800000000000000
+      internalID: -8588498538783268548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerRunSword_3
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 1
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88215aca2f0791aa0800000000000000
+      internalID: -6189792025263140216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerRunSword_4
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 1
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a68c8911c9c85280800000000000000
+      internalID: -9054265219633871193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerRunSword_5
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7dc31ddbc5527a0800000000000000
+      internalID: -6402609324908292159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

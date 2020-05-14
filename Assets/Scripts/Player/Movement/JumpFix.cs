@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BetterJump : MonoBehaviour
+public class JumpFix : MonoBehaviour
 {
     private Rigidbody2D rb;
+
+    [Header("Multiplier")]
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
