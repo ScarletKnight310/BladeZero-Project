@@ -38,11 +38,13 @@ public class PlayerAtk : MonoBehaviour
         Collider2D[] ememiesHit = Physics2D.OverlapBoxAll(rb.position, meleeRange, target);
         for(int i = 0; i < ememiesHit.Length; i++) {
             Debug.Log("Hit"+ i);
+            if(ememiesHit[i].gameObject.tag == "Enemy")
+                Destroy(ememiesHit[i].gameObject);
         }
     }
-
+    /*
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(rb.position, meleeRange);
-    }
+    }*/
 }

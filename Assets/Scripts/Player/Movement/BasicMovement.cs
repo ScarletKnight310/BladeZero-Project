@@ -15,6 +15,8 @@ public class BasicMovement : MonoBehaviour
     public bool jump = false;
     [HideInInspector]
     public bool doubleJump = false;
+    [HideInInspector]
+    public bool ableToJump = false;
 
     [Header("Movement Modifier")]
     public float moveSpeed = 5f;
@@ -41,11 +43,13 @@ public class BasicMovement : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
-        if (PlayerPhysInfo.instance.onGround && Input.GetButton("Jump")) {
-            jump = true;
+        if (PlayerPhysInfo.instance.onGround) {
+            ableToJump = true;
+            if (Input.GetButton("Jump"))
+                jump = true;
         }
-        if (doubleJumpEnabled && Input.GetButton("Jump") && doubleJump) {
-            doubleJumpEnabled = true;
+        else if (doubleJumpEnabled && Input.GetButton("Jump") && ableToJump) {
+            doubleJump = true;
         }
     }
 
@@ -58,9 +62,10 @@ public class BasicMovement : MonoBehaviour
             Jump(Vector2.up);
             jump = false;
         }
-        else if (doubleJumpEnabled) {
+        else if (doubleJump) {
             Jump(Vector2.up);
-            doubleJumpEnabled = false;
+            doubleJump = false;
+            ableToJump = false;
         }
     }
 

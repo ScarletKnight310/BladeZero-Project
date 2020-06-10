@@ -49,14 +49,18 @@ public class Stomp : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if(stomp) {
+        if (stomp) {
             rb.gravityScale = force;
             stomp = false;
             slamming = true;
         }
-        if(PlayerPhysInfo.instance.onGround) {
+        if (PlayerPhysInfo.instance.onGround) {
             rb.gravityScale = defGravity;
-
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (slamming && (collision.gameObject.tag == "Stompable")) {
+            Destroy(collision.gameObject);
         }
     }
 }

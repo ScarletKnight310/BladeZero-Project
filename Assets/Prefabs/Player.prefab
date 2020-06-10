@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &316406301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316406302}
+  m_Layer: 0
+  m_Name: MeleeAtk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &316406302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316406301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1921814645165510522}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1921814645165510525
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,6 +49,7 @@ GameObject:
   - component: {fileID: 6587492986262055135}
   - component: {fileID: 1921814645165510468}
   - component: {fileID: 955617835}
+  - component: {fileID: 517694776}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36,7 +67,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -48.63, y: 5.95, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 316406302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,7 +161,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -151,13 +183,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x: 0
+  y: 0
   jump: 0
-  maxSpeed: 15
-  acceleration: 2
-  jumpHeight: 2.75
-  midAirMult: 1.1
-  midAirResistance: 0.75
-  runningStartJumpMod: 0.05
+  doubleJump: 0
+  ableToJump: 0
+  moveSpeed: 12
+  doubleJumpEnabled: 0
+  jumpForce: 8
+  midAirMult: 0.8
   moveEffect: {fileID: 6703997416088955223, guid: 9014b5966e16c0e4eb9ce2f5bd41b033,
     type: 3}
 --- !u!114 &1921814645165510471
@@ -173,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallMultiplier: 3
-  lowJumpMultiplier: 4
+  lowJumpMultiplier: 8
 --- !u!114 &1921814645165510470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallSlideSpeed: 5
-  WallLeap: {x: 20, y: 20}
+  wallJumpLerp: 0.5
+  WallLeap: {x: 30, y: 20}
   wallJumpEffect: {fileID: 2688145409643497789, guid: 296210bc4cdfa7f4087143ef471244b0,
     type: 3}
 --- !u!114 &1921814645165510469
@@ -236,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 955617835}
   groundRay: 0.1
-  wallRay: 0.2
+  wallRay: 0.3
   offsetY: 0
   offsetX: 0
   onGround: 0
@@ -244,8 +278,10 @@ MonoBehaviour:
   onWall_L: 0
   onWall: 0
   onAny_sur: 0
-  moveDirection: 0
+  moveDirectionX: 0
+  moveDirectionY: 0
   lookingRight: 1
+  attacking_Melee: 0
 --- !u!95 &955617835
 Animator:
   serializedVersion: 3
@@ -265,3 +301,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &517694776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921814645165510525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8e938fefe535b419ed46b0438a5d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkCooldown: 0.25
+  target:
+    serializedVersion: 2
+    m_Bits: 256
+  meleeRange: {x: 2.46, y: 1.19}
